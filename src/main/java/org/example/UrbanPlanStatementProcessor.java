@@ -4,6 +4,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UrbanPlanStatementProcessor {
 
@@ -12,8 +13,10 @@ public class UrbanPlanStatementProcessor {
     public UrbanPlanStatementProcessor(final List<UrbanPlanTransaction> urbanPlanTransactions) {
         this.urbanPlanTransactions = urbanPlanTransactions;
     }
-
     public SummaryStatistics summarizeTransactions() {
+
+        final String summary=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(""));
+
 
         final DoubleSummaryStatistics doubleSummaryStatistics = urbanPlanTransactions.stream()
                 .mapToDouble(UrbanPlanTransaction::getAmount)
@@ -22,24 +25,8 @@ public class UrbanPlanStatementProcessor {
         return new SummaryStatistics(doubleSummaryStatistics.getSum(),
                                      doubleSummaryStatistics.getMax(),
                                      doubleSummaryStatistics.getMin(),
-                                     doubleSummaryStatistics.getAverage());
-    }
-
-    public double summarizeTransactions(final UrbanPlanTransactionSummarizer urbanPlanTransactionSummarizer) {
-        double result = 0;
-        for (final UrbanPlanTransaction urbanPlanTransaction : urbanPlanTransactions) {
-            result = urbanPlanTransactionSummarizer.summarize(result, urbanPlanTransaction);
-        }
-        return result;
-    }
-
-    public double calculateTotalInMonth(final Month month) {
-        return summarizeTransactions((acc, urbanPlanTransaction) ->
-                urbanPlanTransaction.getDate().getMonth() == month ? acc + urbanPlanTransaction.getAmount() : acc);
-    }
-
-    public List<UrbanPlanTransaction> findTransactionsGreaterThanEqual(final int amount) {
-        return findTransactions(urbanPlanTransaction -> urbanPlanTransaction.getAmount() >= amount);
+                                     doubleSummaryStatistics.getAverage(),
+                                     summary);
     }
 
     public List<UrbanPlanTransaction> findTransactions(final UrbanPlanTransactionFilter urbanPlanTransactionFilter) {

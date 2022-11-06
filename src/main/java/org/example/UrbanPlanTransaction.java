@@ -4,21 +4,16 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class UrbanPlanTransaction {
-    private final LocalDate date;
-    private final double amount;
+
+    private final Integer amount;
     private final String description;
     private final String value;
 
 
-    public UrbanPlanTransaction(final LocalDate date, final double amount, final String description,final String value) {
-        this.date = date;
-        this.amount = amount;
+    public UrbanPlanTransaction(final Integer amount, final String description,final String value) {
         this.description = description;
-        this.value = description;
-    }
-
-    public LocalDate getDate() {
-        return date;
+        this.value = value;
+        this.amount = amount;
     }
 
     public double getAmount() {
@@ -31,10 +26,9 @@ public class UrbanPlanTransaction {
 
     @Override
     public String toString() {
-        return "UrbanPlanTransaction{" +
-                "date=" + date +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
+        return "Результаты поиска{" +
+                "Описание=" + description +
+                ", Значение=" + value + '\'' +
                 '}';
     }
 
@@ -44,13 +38,13 @@ public class UrbanPlanTransaction {
         if (o == null || getClass() != o.getClass()) return false;
         UrbanPlanTransaction that = (UrbanPlanTransaction) o;
         return Double.compare(that.amount, amount) == 0 &&
-                date.equals(that.date) &&
+
                 description.equals(that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, amount, description);
+        return Objects.hash(amount, description);
     }
 
 

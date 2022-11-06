@@ -37,8 +37,6 @@ public class UrbanPlanStatementAnalyzer {
 
         return exporter.export(summaryStatistics);
 
-//        System.out.println(exporter.export(summaryStatistics));
-
     }
 
 

@@ -12,6 +12,7 @@ public class HtmlExporter implements Exporter {
         result += "<li><strong>The average is</strong>: " + summaryStatistics.getAverage() + "</li>";
         result += "<li><strong>The max is</strong>: " + summaryStatistics.getMax() + "</li>";
         result += "<li><strong>The min is</strong>: " + summaryStatistics.getMin() + "</li>";
+        result += "<li><strong>The description</strong>: " + summaryStatistics.getDescription() + "</li>";
         result += "</ul>";
         result += "</body>";
         result += "</html>";

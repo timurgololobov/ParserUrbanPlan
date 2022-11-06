@@ -5,12 +5,14 @@ public class SummaryStatistics {
     private final double max;
     private final double min;
     private final double average;
+    private final String description;
 
-    public SummaryStatistics(final double sum, final double max, final double min, final double average) {
+    public SummaryStatistics(final double sum, final double max, final double min, final double average, final String description) {
         this.sum = sum;
         this.max = max;
         this.min = min;
         this.average = average;
+        this.description=description;
     }
 
     public double getSum() {
@@ -27,5 +29,9 @@ public class SummaryStatistics {
 
     public double getAverage() {
         return average;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
