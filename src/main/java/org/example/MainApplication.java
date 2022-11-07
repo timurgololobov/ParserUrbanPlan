@@ -23,7 +23,7 @@ public class MainApplication {
         final Exporter exporter = new HtmlExporter();
 
         //Принимает три параметра, наименование файла, парсер с pdf и экспорт в требуемый формат
-        String exportHTML = urbanPlanStatementAnalyzer.analyze("example.pdf", urbanPlanStatementParser, exporter, RESOURCES);
+        String exportHTML = urbanPlanStatementAnalyzer.analyze("RU77101000-040954-ГПЗУ.pdf", urbanPlanStatementParser, exporter, RESOURCES);
 
         //Записать HTML итоговый результат парсинга в файл по пути ресурса
         try {
