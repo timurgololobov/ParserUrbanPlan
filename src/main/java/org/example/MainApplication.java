@@ -27,7 +27,7 @@ public class MainApplication {
 
         //Записать HTML итоговый результат парсинга в файл по пути ресурса
         try {
-            final Path pathForText = Paths.get(RESOURCES + "test.html"); //добавил
+            final Path pathForText = Paths.get("test.html"); //добавил
             byte[] bs = exportHTML.getBytes();
             Path writtenFilePath = Files.write(pathForText, bs);
             System.out.println("Written content in file:\n"+ new String(Files.readAllBytes(writtenFilePath)));
