@@ -27,8 +27,8 @@ public class UrbanPlanTransaction {
     @Override
     public String toString() {
         return "<hr>" +
-                "Параметр: " + description +
-                ", Значение: " + value ;
+                description +
+                ": " + value ;
     }
 
     @Override

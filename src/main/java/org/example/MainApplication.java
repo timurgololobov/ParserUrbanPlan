@@ -1,12 +1,5 @@
 package org.example;
 
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-
-import static org.example.Attributes.*;
-
 public class MainApplication {
 
     public static void main(final String[] args) throws Exception {
@@ -23,7 +16,7 @@ public class MainApplication {
         final Exporter exporter = new HtmlExporter();
 
         //Принимает три параметра, наименование файла, парсер с pdf и экспорт в требуемый формат
-        String exportHTML = urbanPlanStatementAnalyzer.analyze("RU77101000-040954-ГПЗУ.pdf", urbanPlanStatementParser, exporter, RESOURCES);
+        String exportHTML = urbanPlanStatementAnalyzer.analyze("RU77101000-040954-ГПЗУ.pdf", urbanPlanStatementParser, exporter);
 
         //Записать HTML итоговый результат парсинга в файл по пути ресурса
         WorkWithFile.writeToFile(exportHTML);

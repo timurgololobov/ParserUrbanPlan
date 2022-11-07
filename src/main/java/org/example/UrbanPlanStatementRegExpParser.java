@@ -19,18 +19,15 @@ public class UrbanPlanStatementRegExpParser implements UrbanPlanStatementParser 
     }
 
     public UrbanPlanTransaction parseFrom(final String line) {
-        final String[] columns = line.split(",");
+        final String[] columns = line.split(";");
         //Описать функции регулярных выражений
-        ///(?<=Площадь земельного участка \n)[0-9]{3,10}(?= кв\.м)/ig
-        final String regexone = "Площадь земельного участка \n";
-//        final String regextwo = "кв";
         Pattern pattern = Pattern.compile(columns[1]);
         Matcher matcher = pattern.matcher(this.text);
         String outText;
         if(matcher.find()) {
-            outText = this.text.substring(matcher.start(), matcher.end());
+            outText = matcher.group(1);
         } else {
-            outText="Тестовая запись";
+            outText="не найден";
         }
         //TODO: Добавить параметр указывающий нашел выражение или нет, добавить условие
 
