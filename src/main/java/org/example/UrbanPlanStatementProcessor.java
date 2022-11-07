@@ -1,6 +1,5 @@
 package org.example;
 
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -15,7 +14,7 @@ public class UrbanPlanStatementProcessor {
     }
     public SummaryStatistics summarizeTransactions() {
 
-        final String description=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(""));
+        final String description=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining("<hr>"));
 //        final String value=urbanPlanTransactions.stream().map(x->x.getDescription()).collect(Collectors.joining(""));
 
         final DoubleSummaryStatistics doubleSummaryStatistics = urbanPlanTransactions.stream()
@@ -23,8 +22,6 @@ public class UrbanPlanStatementProcessor {
                 .summaryStatistics();
 
         return new SummaryStatistics(doubleSummaryStatistics.getSum(),
-                                     doubleSummaryStatistics.getMax(),
-                                     doubleSummaryStatistics.getMin(),
                                      doubleSummaryStatistics.getAverage(),
                                      description);
     }

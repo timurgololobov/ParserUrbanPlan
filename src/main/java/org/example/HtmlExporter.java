@@ -10,7 +10,7 @@ public class HtmlExporter implements Exporter {
         result += "<ul>";
         result += "<li><strong>The sum is</strong>: " + summaryStatistics.getSum() + "</li>";
         result += "<li><strong>The average is</strong>: " + summaryStatistics.getAverage() + "</li>";
-        result += "<li><strong>Результаты поиска</strong>: " + summaryStatistics.getDescription() + "</li>";
+        result += "<li><strong>Результаты поиска</strong>: <hr>" + summaryStatistics.getDescription() + "</li>";
         result += "</ul>";
         result += "</body>";
         result += "</html>";

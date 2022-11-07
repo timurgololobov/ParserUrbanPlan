@@ -29,7 +29,7 @@ public class UrbanPlanStatementRegExpParser implements UrbanPlanStatementParser 
         } else {
             outText="не найден";
         }
-        //TODO: Добавить параметр указывающий нашел выражение или нет, добавить условие
+        //TODO: Добавить параметр указывающий нашел выражение или нет, добавить условие, добавить дату
 
         //final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
         //final double amount = Double.parseDouble(columns[1]);

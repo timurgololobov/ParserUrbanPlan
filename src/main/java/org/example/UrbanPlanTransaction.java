@@ -26,9 +26,7 @@ public class UrbanPlanTransaction {
 
     @Override
     public String toString() {
-        return "<hr>" +
-                description +
-                ": " + value ;
+        return description + ": " + value ;
     }
 
     @Override
