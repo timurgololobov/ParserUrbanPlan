@@ -26,10 +26,9 @@ public class UrbanPlanTransaction {
 
     @Override
     public String toString() {
-        return "Результаты поиска{" +
-                "Описание=" + description +
-                ", Значение=" + value + '\'' +
-                '}';
+        return "<hr>" +
+                "Параметр: " + description +
+                ", Значение: " + value ;
     }
 
     @Override

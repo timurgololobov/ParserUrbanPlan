@@ -15,8 +15,8 @@ public class UrbanPlanStatementProcessor {
     }
     public SummaryStatistics summarizeTransactions() {
 
-        final String summary=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(""));
-
+        final String description=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(""));
+//        final String value=urbanPlanTransactions.stream().map(x->x.getDescription()).collect(Collectors.joining(""));
 
         final DoubleSummaryStatistics doubleSummaryStatistics = urbanPlanTransactions.stream()
                 .mapToDouble(UrbanPlanTransaction::getAmount)
@@ -26,7 +26,7 @@ public class UrbanPlanStatementProcessor {
                                      doubleSummaryStatistics.getMax(),
                                      doubleSummaryStatistics.getMin(),
                                      doubleSummaryStatistics.getAverage(),
-                                     summary);
+                                     description);
     }
 
     public List<UrbanPlanTransaction> findTransactions(final UrbanPlanTransactionFilter urbanPlanTransactionFilter) {
