@@ -28,7 +28,7 @@ public class UrbanPlanStatementAnalyzer {
 
         final List<UrbanPlanTransaction> urbanPlanTransactions = urbanPlanStatementParser.parseLinesFrom(lines,text);
 
-        final UrbanPlanStatementProcessor urbanPlanStatementProcessor = new UrbanPlanStatementProcessor(urbanPlanTransactions, exporter.setJoining());
+        final UrbanPlanStatementProcessor urbanPlanStatementProcessor = new UrbanPlanStatementProcessor(urbanPlanTransactions, exporter);
 
         final SummaryStatistics summaryStatistics = urbanPlanStatementProcessor.summarizeTransactions();
 

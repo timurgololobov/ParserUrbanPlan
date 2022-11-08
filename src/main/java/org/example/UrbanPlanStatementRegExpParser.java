@@ -20,7 +20,6 @@ public class UrbanPlanStatementRegExpParser implements UrbanPlanStatementParser 
 
     public UrbanPlanTransaction parseFrom(final String line) {
         final String[] columns = line.split(";");
-        //Описать функции регулярных выражений
         Pattern pattern = Pattern.compile(columns[1]);
         Matcher matcher = pattern.matcher(this.text);
         String outText;
@@ -31,8 +30,6 @@ public class UrbanPlanStatementRegExpParser implements UrbanPlanStatementParser 
         }
         //TODO: Добавить параметр указывающий нашел выражение или нет, добавить условие, добавить дату
 
-        //final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
-        //final double amount = Double.parseDouble(columns[1]);
         return new UrbanPlanTransaction(this.amount, columns[0], outText);
     }
 

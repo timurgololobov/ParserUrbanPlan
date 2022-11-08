@@ -9,15 +9,17 @@ public class UrbanPlanStatementProcessor {
 
     private final List<UrbanPlanTransaction> urbanPlanTransactions;
     private final String JOINING;
+    private final Exporter exporter;
 
-    public UrbanPlanStatementProcessor(final List<UrbanPlanTransaction> urbanPlanTransactions, String JOINING) {
+    public UrbanPlanStatementProcessor(final List<UrbanPlanTransaction> urbanPlanTransactions, Exporter exporter) {
         this.urbanPlanTransactions = urbanPlanTransactions;
-        this.JOINING = JOINING;
+        this.JOINING = exporter.addJoining();
+        this.exporter=exporter;
     }
 
      public SummaryStatistics summarizeTransactions() {
 
-        final String resultForExport=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(JOINING));
+         final String resultForExport=urbanPlanTransactions.stream().map(x->x.mergeFinal(exporter)).collect(Collectors.joining(JOINING));
 
         final DoubleSummaryStatistics doubleSummaryStatistics = urbanPlanTransactions.stream()
                 .mapToDouble(UrbanPlanTransaction::getAmount)

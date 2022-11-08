@@ -1,6 +1,5 @@
 package org.example;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class UrbanPlanTransaction {
@@ -8,7 +7,6 @@ public class UrbanPlanTransaction {
     private final Integer amount;
     private final String description;
     private final String value;
-
 
     public UrbanPlanTransaction(final Integer amount, final String description,final String value) {
         this.description = description;
@@ -20,12 +18,8 @@ public class UrbanPlanTransaction {
         return amount;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getValue() {
-        return value;
+    public String mergeFinal(Exporter exporter){
+        return exporter.mergeArgument(description, value);
     }
 
     @Override
@@ -47,6 +41,5 @@ public class UrbanPlanTransaction {
     public int hashCode() {
         return Objects.hash(amount, description);
     }
-
 
 }

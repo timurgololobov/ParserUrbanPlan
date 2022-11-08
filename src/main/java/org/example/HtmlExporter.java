@@ -3,8 +3,12 @@ package org.example;
 public class HtmlExporter implements Exporter {
 
     @Override
-    public String setJoining() {
+    public String addJoining() {
         return "<hr>";
+    }
+    @Override
+    public String mergeArgument(String description, String value) {
+        return description + ": " + value;
     }
     @Override
     public String export(final SummaryStatistics summaryStatistics) {
