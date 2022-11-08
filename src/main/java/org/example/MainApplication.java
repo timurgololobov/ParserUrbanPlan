@@ -4,7 +4,7 @@ public class MainApplication {
 
     public static void main(final String[] args) throws Exception {
 
-        //Описание применяемых регулярных выражений, файл записан в CSV
+        //Описание применяемых регулярных выражений, файл записан в CSV(путь: src/main/resources/reqexpparser.csv
         final UrbanPlanStatementParser urbanPlanStatementParser
                 = new UrbanPlanStatementRegExpParser();
 
@@ -16,10 +16,10 @@ public class MainApplication {
         final Exporter exporter = new HtmlExporter();
 
         //Принимает три параметра, наименование файла, парсер с pdf и экспорт в требуемый формат
-        String exportHTML = urbanPlanStatementAnalyzer.analyze("RU77101000-040954-ГПЗУ.pdf", urbanPlanStatementParser, exporter);
+        String export = urbanPlanStatementAnalyzer.analyze("RU77101000-040954-ГПЗУ.pdf", urbanPlanStatementParser, exporter);
 
         //Записать HTML итоговый результат парсинга в файл по пути ресурса
-        WorkWithFile.writeToFile(exportHTML);
+        WorkWithFile.writeToFile(export);
 
     }
 }
