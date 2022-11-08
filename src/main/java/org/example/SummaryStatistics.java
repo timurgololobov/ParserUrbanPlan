@@ -3,12 +3,14 @@ package org.example;
 public class SummaryStatistics {
     private final double sum;
     private final double average;
-    private final String description;
+    private final String result;
 
-    public SummaryStatistics(final double sum, final double average, final String description) {
+
+    public SummaryStatistics(final double sum, final double average, final String result) {
         this.sum = sum;
         this.average = average;
-        this.description=description;
+        this.result=result;
+
     }
 
     public double getSum() {
@@ -18,7 +20,8 @@ public class SummaryStatistics {
         return average;
     }
 
-    public String getDescription() {
-        return description;
+    public String getResult() {
+        return result;
     }
+
 }

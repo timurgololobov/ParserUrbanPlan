@@ -1,6 +1,11 @@
 package org.example;
 
 public class HtmlExporter implements Exporter {
+
+    @Override
+    public String setJoining() {
+        return "<hr>";
+    }
     @Override
     public String export(final SummaryStatistics summaryStatistics) {
         String result = "<!doctype html>";
@@ -10,7 +15,7 @@ public class HtmlExporter implements Exporter {
         result += "<ul>";
         result += "<li><strong>The sum is</strong>: " + summaryStatistics.getSum() + "</li>";
         result += "<li><strong>The average is</strong>: " + summaryStatistics.getAverage() + "</li>";
-        result += "<li><strong>Результаты поиска</strong>: <hr>" + summaryStatistics.getDescription() + "</li>";
+        result += "<li><strong>Результаты поиска</strong>: <hr>" + summaryStatistics.getResult() + "</li>";
         result += "</ul>";
         result += "</body>";
         result += "</html>";

@@ -8,14 +8,16 @@ import java.util.stream.Collectors;
 public class UrbanPlanStatementProcessor {
 
     private final List<UrbanPlanTransaction> urbanPlanTransactions;
+    private final String JOINING;
 
-    public UrbanPlanStatementProcessor(final List<UrbanPlanTransaction> urbanPlanTransactions) {
+    public UrbanPlanStatementProcessor(final List<UrbanPlanTransaction> urbanPlanTransactions, String JOINING) {
         this.urbanPlanTransactions = urbanPlanTransactions;
+        this.JOINING = JOINING;
     }
-    public SummaryStatistics summarizeTransactions() {
 
-        final String description=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining("<hr>"));
-//        final String value=urbanPlanTransactions.stream().map(x->x.getDescription()).collect(Collectors.joining(""));
+     public SummaryStatistics summarizeTransactions() {
+
+        final String resultForExport=urbanPlanTransactions.stream().map(x->x.toString()).collect(Collectors.joining(JOINING));
 
         final DoubleSummaryStatistics doubleSummaryStatistics = urbanPlanTransactions.stream()
                 .mapToDouble(UrbanPlanTransaction::getAmount)
@@ -23,7 +25,7 @@ public class UrbanPlanStatementProcessor {
 
         return new SummaryStatistics(doubleSummaryStatistics.getSum(),
                                      doubleSummaryStatistics.getAverage(),
-                                     description);
+                                     resultForExport);
     }
 
     public List<UrbanPlanTransaction> findTransactions(final UrbanPlanTransactionFilter urbanPlanTransactionFilter) {

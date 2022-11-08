@@ -1,6 +1,5 @@
 package org.example;
 
-
 import org.apache.pdfbox.util.PDFTextStripper;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
@@ -18,24 +17,23 @@ public class UrbanPlanStatementAnalyzer {
                         final Exporter exporter) throws IOException {
 
         final Path path = Paths.get(RESOURCES + fileName);
-        final Path pathtwo = Paths.get(RESOURCES + "regexpparser.csv");
+        final Path pathReqexp = Paths.get(RESOURCES + "regexpparser.csv");
 
         PDDocument document = PDDocument.load(path.toString());
         PDFTextStripper pdfStripper = new PDFTextStripper();
         String text = pdfStripper.getText(document);
         document.close();
 
-        final List<String> lines = Files.readAllLines(pathtwo);
+        final List<String> lines = Files.readAllLines(pathReqexp);
 
         final List<UrbanPlanTransaction> urbanPlanTransactions = urbanPlanStatementParser.parseLinesFrom(lines,text);
 
-        final UrbanPlanStatementProcessor urbanPlanStatementProcessor = new UrbanPlanStatementProcessor(urbanPlanTransactions);
+        final UrbanPlanStatementProcessor urbanPlanStatementProcessor = new UrbanPlanStatementProcessor(urbanPlanTransactions, exporter.setJoining());
 
         final SummaryStatistics summaryStatistics = urbanPlanStatementProcessor.summarizeTransactions();
 
         return exporter.export(summaryStatistics);
 
     }
-
 
 }

@@ -24,9 +24,13 @@ public class UrbanPlanTransaction {
         return description;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
-        return description + ": " + value ;
+        return description + ": " + value;
     }
 
     @Override
